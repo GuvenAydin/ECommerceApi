@@ -19,6 +19,23 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMvc();
 builder.Services.AddDbContext<ECommerceDbContext>(item => item.UseSqlServer(builder.Configuration.GetConnectionString("myconn")));
 
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.WithOrigins("http://localhost:4200/",
+                                              "http://localhost:7038/")
+                                               .AllowAnyHeader()
+                                               .AllowAnyMethod()
+                                               .AllowAnyOrigin();
+                      });
+});
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,6 +50,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();
 

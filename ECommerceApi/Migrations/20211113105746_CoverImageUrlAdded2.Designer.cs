@@ -4,6 +4,7 @@ using ECommerceApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerceApi.Migrations
 {
     [DbContext(typeof(ECommerceDbContext))]
-    partial class ECommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211113105746_CoverImageUrlAdded2")]
+    partial class CoverImageUrlAdded2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,47 +57,47 @@ namespace ECommerceApi.Migrations
                         new
                         {
                             Id = 1,
-                            CoverImageUrl = "https://via.placeholder.com/335&text=Iphone_15_X",
-                            Description = "Nice iphone 15 X PRO MAX",
-                            DiscountedPrice = 790.5m,
-                            Name = "Iphone 15",
-                            RegularPrice = 890.5m
+                            CoverImageUrl = "https://via.placeholder.com/335&text=Product_1",
+                            Description = "Developer",
+                            DiscountedPrice = 2.5m,
+                            Name = "Telefon",
+                            RegularPrice = 5.5m
                         },
                         new
                         {
                             Id = 2,
-                            CoverImageUrl = "https://via.placeholder.com/335&text=Macbook_Pro",
-                            Description = "It is nice macbook 1TB hdd",
-                            DiscountedPrice = 4899.9m,
-                            Name = "Macbook Pro",
-                            RegularPrice = 5000m
+                            CoverImageUrl = "https://via.placeholder.com/335&text=Product_2",
+                            Description = "Manager",
+                            DiscountedPrice = 1.5m,
+                            Name = "Tablet",
+                            RegularPrice = 3.5m
                         },
                         new
                         {
                             Id = 3,
-                            CoverImageUrl = "https://via.placeholder.com/335&text=Oculus_Quest_2",
-                            Description = "Oculus Quest 2 is our newest, most advanced all-in-one VR system yet.",
-                            DiscountedPrice = 489.8m,
-                            Name = "Oculus Quest 2",
-                            RegularPrice = 550m
+                            CoverImageUrl = "https://via.placeholder.com/335&text=Product_3",
+                            Description = "Kamyon",
+                            DiscountedPrice = 1.5m,
+                            Name = "Kamyon",
+                            RegularPrice = 6.5m
                         },
                         new
                         {
                             Id = 4,
-                            CoverImageUrl = "https://via.placeholder.com/335&text=Apple_Watch_7",
-                            Description = "Apple Watch is het ultieme device voor een gezond leven. ",
-                            DiscountedPrice = 749.9m,
-                            Name = "Apple Watch 7",
-                            RegularPrice = 800m
+                            CoverImageUrl = "https://via.placeholder.com/335&text=Product_4",
+                            Description = "Dododo",
+                            DiscountedPrice = 1.5m,
+                            Name = "Laptop",
+                            RegularPrice = 15.5m
                         },
                         new
                         {
                             Id = 5,
-                            CoverImageUrl = "https://via.placeholder.com/335&text=Sony_Headset",
-                            Description = "Buy Gaming headset?",
-                            DiscountedPrice = 89.9m,
-                            Name = "Sony Headset",
-                            RegularPrice = 99.9m
+                            CoverImageUrl = "https://via.placeholder.com/335&text=Product_5",
+                            Description = "Consultant",
+                            DiscountedPrice = 3.5m,
+                            Name = "Gemi",
+                            RegularPrice = 33.5m
                         });
                 });
 #pragma warning restore 612, 618

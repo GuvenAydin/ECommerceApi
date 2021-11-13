@@ -18,6 +18,7 @@ namespace ECommerceApi.Entities
         public decimal RegularPrice { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal? DiscountedPrice { get; set; }
+        public string? CoverImageUrl { get; set; }
 
 
         public Product()

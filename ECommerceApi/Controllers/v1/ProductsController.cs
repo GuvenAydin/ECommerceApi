@@ -34,9 +34,6 @@ namespace ECommerceApi.Controllers.v1
 			return Success("Products listed.", null, products);
 		}
 
-
-
-
 	}
 }
 

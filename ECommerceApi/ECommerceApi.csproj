@@ -33,6 +33,8 @@
     <None Remove="Helpers\" />
     <None Remove="Controllers\Base\v1\" />
     <None Remove="Microsoft.AspNetCore.Mvc.Versioning" />
+    <None Remove="Static\" />
+    <None Remove="Static\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -41,5 +43,7 @@
     <Folder Include="Controllers\Base\" />
     <Folder Include="Helpers\" />
     <Folder Include="Controllers\Base\v1\" />
+    <Folder Include="Static\" />
+    <Folder Include="Static\Product\" />
   </ItemGroup>
 </Project>
