@@ -22,9 +22,9 @@ namespace ECommerceApi.Controllers.v1
         }
 
 		/// <summary>
-		/// List all users
+		/// List all products
 		/// </summary>
-		/// <returns>User list</returns>
+		/// <returns>Product list</returns>
 		[HttpGet]
 		[ProducesResponseType(typeof(List<Product>), 200)]
 		public async Task<IActionResult> Get()
@@ -32,6 +32,20 @@ namespace ECommerceApi.Controllers.v1
 			var products = await _context.Product.ToListAsync();
 
 			return Success("Products listed.", null, products);
+		}
+
+
+		/// <summary>
+		/// Get single product by id 
+		/// </summary>
+		/// <returns>Single product</returns>
+		[HttpGet("{id}")]
+		[ProducesResponseType(typeof(Product), 200)]
+		public async Task<IActionResult> GetProductById(int id)
+		{
+			var product = await _context.Product.FirstOrDefaultAsync(x=>x.Id == id);
+
+			return Success("Product listed.", null, product);
 		}
 
 	}
