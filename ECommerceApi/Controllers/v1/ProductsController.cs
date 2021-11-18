@@ -45,9 +45,10 @@ namespace ECommerceApi.Controllers.v1
 		{
 			var product = await _context.Product.FirstOrDefaultAsync(x=>x.Id == id);
 
+
 			return Success("Product listed.", null, product);
 		}
 
-	}
+    }
 }
 
