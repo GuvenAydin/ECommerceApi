@@ -6,12 +6,14 @@ namespace ECommerceApi.Data
 {
     public class ECommerceDbContext: DbContext
     {
-        public ECommerceDbContext(DbContextOptions options) : base(options)
+        public ECommerceDbContext(DbContextOptions options)
+            : base(options)
         {
         }
 
         public DbSet<Product> Product { get; set; }
         public DbSet<User> User { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,14 +26,15 @@ namespace ECommerceApi.Data
                 new Product() { Id = 5, Name = "Sony Headset", Description = "Buy Gaming headset?", RegularPrice = (decimal)(99.9), CoverImageUrl = "https://via.placeholder.com/335&text=Sony_Headset" });
 
             modelBuilder.Entity<User>().HasData(
-                new User() { Id=1, FirstName = "Anki", LastName = "De Jong", Email = "anki@outlook.com", Phone = "0617363601",Password = "1234" },
-                new User() { Id=2, FirstName = "Dewitt", LastName = "Van de Berg", Email = "dewitt@outlook.com",Phone = "0655634616", Password = "1234" },
-                new User() { Id=3, FirstName = "Dirck", LastName = "Bakker", Email = "dirck@outlook.com", Phone = "0621048961", Password = "1234" },
-                new User() { Id=4, FirstName = "Gusta", LastName = "Janssen" , Email = "gusta@outlook.com", Phone = "0687201108", Password = "1234" },
-                new User() { Id=5, FirstName = "Gerritt", LastName = "Smit", Email = "gerritt@outlook.com",Phone = "0670902290", Password = "1234" },
-                new User() { Id=6, FirstName = "Willem", LastName = "Meijer", Email = "willem@outlook.com",Phone = "0619116876", Password = "1234" }
+                new User() { Id = 1, FirstName = "Anki", LastName = "De Jong", Email = "anki@outlook.com", Phone = "0617363601",Password = "1234" },
+                new User() { Id = 2, FirstName = "Dewitt", LastName = "Van de Berg", Email = "dewitt@outlook.com",Phone = "0655634616", Password = "1234" },
+                new User() { Id = 3, FirstName = "Dirck", LastName = "Bakker", Email = "dirck@outlook.com", Phone = "0621048961", Password = "1234" },
+                new User() { Id = 4, FirstName = "Gerritt", LastName = "Smit", Email = "gerritt@outlook.com",Phone = "0670902290", Password = "1234" },
+                new User() { Id = 5, FirstName = "Willem", LastName = "Meijer", Email = "willem@outlook.com",Phone = "0619116876", Password = "1234" }
             );
         }
+
+
     }
 }
 

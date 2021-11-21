@@ -15,13 +15,10 @@ namespace ECommerceApi.Controllers.v1
 {
     public class UsersController : Basev1ApiController
     {
-        private readonly ECommerceDbContext _context;
-
 		public readonly IUserService _userService;
 
-        public UsersController(ECommerceDbContext context, IUserService userService)
+        public UsersController(IUserService userService)
         {
-            _context = context;
 			_userService = userService;
 		}
 
@@ -39,10 +36,9 @@ namespace ECommerceApi.Controllers.v1
 		{
 			try
 			{
-				await _context.User.AddAsync(model);
-				await _context.SaveChangesAsync();
+				var modelResult = _userService.Register(model);
 
-				return Success("User added successfully.", null, model);
+				return Success("User added successfully.", null, modelResult);
 			}
 			catch (Exception ex)
 			{
@@ -50,7 +46,6 @@ namespace ECommerceApi.Controllers.v1
 			}
 
 		}
-
 
 
 		/// <summary>

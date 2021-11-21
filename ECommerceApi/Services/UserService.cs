@@ -8,6 +8,7 @@ namespace ECommerceApi.Services
     public interface IUserService
     {
         Task<ICollection<User>> GetUsers();
+        User Register(User model);
     }
 
     public class UserService:BaseService, IUserService
@@ -20,9 +21,17 @@ namespace ECommerceApi.Services
 
         public async Task<ICollection<User>> GetUsers()
         {
-           var u =  await db.User.ToListAsync();
+            return await db.User.ToListAsync();
+        }
 
-            return u;
+
+        public User Register(User model)
+        {
+
+            db.User.Add(model);
+            db.SaveChanges();
+           
+            return model;
         }
 
     }
