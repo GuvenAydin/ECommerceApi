@@ -35,6 +35,7 @@
     <None Remove="Microsoft.AspNetCore.Mvc.Versioning" />
     <None Remove="Static\" />
     <None Remove="Static\Product\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -45,5 +46,6 @@
     <Folder Include="Controllers\Base\v1\" />
     <Folder Include="Static\" />
     <Folder Include="Static\Product\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

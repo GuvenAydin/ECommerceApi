@@ -6,6 +6,7 @@ using ECommerceApi.Controllers.Base.v1;
 using ECommerceApi.Data;
 using ECommerceApi.Entities;
 using ECommerceApi.Helpers;
+using ECommerceApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +17,13 @@ namespace ECommerceApi.Controllers.v1
     {
         private readonly ECommerceDbContext _context;
 
-        public UsersController(ECommerceDbContext context)
+		public readonly IUserService _userService;
+
+        public UsersController(ECommerceDbContext context, IUserService userService)
         {
             _context = context;
-
-        }
+			_userService = userService;
+		}
 
 		/// <summary>
 		/// Create a new user
@@ -46,6 +49,21 @@ namespace ECommerceApi.Controllers.v1
 				return Error<object>("Something went wrong!", ex.Message, null);
 			}
 
+		}
+
+
+
+		/// <summary>
+		/// List all users
+		/// </summary>
+		/// <returns>User list</returns>
+		[HttpGet]
+		[ProducesResponseType(typeof(List<User>), 200)]
+		public async Task<IActionResult> Get()
+		{
+			var users = await _userService.GetUsers();
+
+			return Success("Products listed.", null, users);
 		}
 	}
 }

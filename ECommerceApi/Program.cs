@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using ECommerceApi.Helpers;
+using ECommerceApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 
 builder.Services.AddScoped<ValidateModelAttribute>();
+
+
+//ne zaman IUserService gerekirse bir UserService oluştur
+builder.Services.AddScoped<IUserService,UserService>();
+
 
 builder.Services.AddControllers();
 
