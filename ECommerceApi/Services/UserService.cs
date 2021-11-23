@@ -28,6 +28,7 @@ namespace ECommerceApi.Services
         public User Register(User model)
         {
 
+
             db.User.Add(model);
             db.SaveChanges();
            
