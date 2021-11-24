@@ -45,10 +45,7 @@ namespace ECommerceApi.Services
             db.SaveChanges();
 
 
-            var resultModel = AuthenticateUser(model.Email);
-
-
-            return resultModel;
+            return AuthenticateUser(model.Email);
         }
 
         public dynamic AuthenticateUser(string email)
