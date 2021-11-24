@@ -17,6 +17,7 @@ builder.Services.AddScoped<ValidateModelAttribute>();
 
 //ne zaman IUserService gerekirse bir UserService oluştur
 builder.Services.AddScoped<IUserService,UserService>();
+builder.Services.AddScoped<ICryptoService, CryptoService>();
 
 
 builder.Services.AddControllers();

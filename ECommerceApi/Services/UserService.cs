@@ -13,10 +13,13 @@ namespace ECommerceApi.Services
 
     public class UserService:BaseService, IUserService
     {
-        public UserService(ECommerceDbContext db)
+        public readonly ICryptoService _cryptoService;
+
+
+        public UserService(ECommerceDbContext db, ICryptoService cryptoService)
             :base(db)
         {
-
+            this._cryptoService = cryptoService;
         }
 
         public async Task<ICollection<User>> GetUsers()
@@ -27,9 +30,10 @@ namespace ECommerceApi.Services
 
         public User Register(User model)
         {
-
+            model.Password = _cryptoService.Encode(model.Password);
 
             db.User.Add(model);
+
             db.SaveChanges();
            
             return model;
