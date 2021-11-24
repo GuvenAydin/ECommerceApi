@@ -29,6 +29,7 @@ namespace ECommerceApi.Controllers.v1
 		/// <returns>Results</returns>
 		[HttpPost]
 		[ValidateModel]
+		[AllowAnonymous]
 		[ProducesResponseType(typeof(ApiReturn<User>), 200)]
 		[ProducesResponseType(typeof(ApiReturn<User>), 400)]
 		[ProducesResponseType(typeof(ApiReturn<User>), 500)]
