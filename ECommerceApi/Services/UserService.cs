@@ -12,7 +12,7 @@ namespace ECommerceApi.Services
     {
         Task<ICollection<User>> GetUsers();
         dynamic Register(User model);
-        dynamic AuthenticateUser(string email);
+        dynamic AuthenticateUser(string email, string password);
     }
 
     public class UserService:BaseService, IUserService
@@ -44,19 +44,27 @@ namespace ECommerceApi.Services
             db.User.Add(model);
             db.SaveChanges();
 
-
-            return AuthenticateUser(model.Email);
+            //token will be return
+            return AuthenticateUser(model.Email, unencryptedPassword);
         }
 
-        public dynamic AuthenticateUser(string email)
+
+
+
+        public dynamic AuthenticateUser(string email,string password)
         {
-            if(string.IsNullOrWhiteSpace(email) == false)
+
+            var encodedPassword = _cryptoService.Encode(password);
+
+            var user = db.User.FirstOrDefault(x => x.Email == email && x.Password == encodedPassword);
+
+            if (user != null)
             {
                 var claims = new[]
                 {
-                    //new Claim(ClaimTypes.Name, firstName),
-                    //new Claim(ClaimTypes.Surname, lastName),
-                    new Claim(ClaimTypes.Email, email),
+                    new Claim(ClaimTypes.Name, user.FirstName),
+                    new Claim(ClaimTypes.Surname, user.LastName),
+                    new Claim(ClaimTypes.Email, user.Email),
                 };
 
                 var key = new SymmetricSecurityKey(Convert.FromBase64String(_configuration["Authentication:JwtKey"]));
@@ -77,8 +85,5 @@ namespace ECommerceApi.Services
             return false;
         }
 
-
-
     }
 }
-
